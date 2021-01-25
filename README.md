@@ -1,5 +1,3 @@
-# Nothing here right now, still in dev
-
 # Based on CrazyRedMachine/PN5180-cardio, but in RC522
  RC522 ISO14443A wavepass USB HID card reader (cardio)
 
@@ -7,6 +5,8 @@
 
 This work is based on zyp's cardio.
 HID layer code is based on Matthew Heironimus' <Joystick.h> library.
+
+Make sure to use a proper card so your important card id will not be exposed to any network services.
 
 # Supported devices
 
