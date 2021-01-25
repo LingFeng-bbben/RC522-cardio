@@ -23,9 +23,6 @@ MFRC522 rfid(SS_PIN, RST_PIN); // Instance of the class
 
 MFRC522::MIFARE_Key key; 
 
-// Init array that will store new NUID 
-byte nuidPICC[4];
-
 Cardio_ Cardio;
  
 void setup() {
@@ -56,20 +53,17 @@ void loop() {
   if ( ! rfid.PICC_ReadCardSerial())
     return;
 
-  for (byte i = 0; i < 4; i++) {
+  for (byte i = 0; i < 4; i++) { //repeat twice to fill 8 byte
     uid[i] = rfid.uid.uidByte[i];
   }
-
   for (byte i = 0; i < 4; i++) {
     uid[i+4] = rfid.uid.uidByte[i];
   }
+  
   uid[0]=0x01;
   uid[1]=0x2E;//felica start
 
   Cardio.setUID(2, uid);
   Cardio.sendState();
   delay(3000); 
-
-
-
 }
